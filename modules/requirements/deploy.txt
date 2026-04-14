@@ -1,0 +1,2 @@
+google-cloud-storage==2.18.2
+modal==0.67.20

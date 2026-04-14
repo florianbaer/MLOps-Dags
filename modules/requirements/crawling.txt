@@ -1,0 +1,9 @@
+beautifulsoup4==4.12.3
+requests
+pydantic
+pydantic-settings==2.0.3
+pyfiglet==1.0.2
+coloredlogs==15.0.1
+google-cloud-firestore==2.19.0
+google-cloud-storage==2.18.2
+python-dateutil

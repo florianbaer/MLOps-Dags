@@ -1,0 +1,9 @@
+pandas==2.2.0
+beautifulsoup4==4.12.3
+spacy==3.8.0
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+scikit-learn==1.5.2
+wandb==0.18.7
+Pyarrow==16.1.0
+google-cloud-firestore==2.19.0
+google-cloud-storage==2.18.2
