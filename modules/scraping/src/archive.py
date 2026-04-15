@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from openai import OpenAI
+from google import genai
 import json
 from dotenv import load_dotenv
 import os
@@ -9,10 +9,10 @@ import re
 import tkinter as tk
 from tkinter import simpledialog
 
-# Load OpenAI API key from .env file
+# Load Gemini API key from .env file
 dotenv_path = r"C:/Users/hidbe/VSCodeProjects/JobAssistance/.env"
 load_dotenv(dotenv_path)
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'), )
+client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
 
 # Visit a webpage and return its soup object or None if not found
@@ -99,7 +99,7 @@ def extract_job_data(soup, url):
         return None
 
 
-# # Use GPT to analyze the job description for additional fields
+# # Use Gemini to analyze the job description for additional fields
 # def extract_gpt_analysis(description_text):
 #     prompt = """
 #     Extract the following fields from this job description:
@@ -115,21 +115,19 @@ def extract_job_data(soup, url):
 #     }
 #     """
 #     try:
-#         response = client.chat.completions.create(
-#             model="gpt-3.5-turbo",
-#             messages=[
-#                 {"role": "system", "content": prompt},
-#                 {"role": "user", "content": description_text}
-#             ],
-#             temperature=0.7,
-#             max_tokens=1024,
-#             top_p=1
+#         response = client.models.generate_content(
+#             model="gemini-2.5-flash",
+#             contents=description_text,
+#             config={
+#                 "system_instruction": prompt,
+#                 "temperature": 0.7,
+#                 "max_output_tokens": 1024,
+#             },
 #         )
-#         # Parse the JSON response from the assistant's reply
-#         completion = json.loads(response.choices[0].message.content)
+#         completion = json.loads(response.text)
 #         return completion
 #     except Exception as e:
-#         print(f"Error in GPT analysis: {e}")
+#         print(f"Error in Gemini analysis: {e}")
 #         return {"Benefits": "", "Requirements": "", "Responsibilities": ""}
 
 
