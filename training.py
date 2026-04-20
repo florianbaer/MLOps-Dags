@@ -20,17 +20,17 @@ with DAG(
 ) as dag:
     setup_credentials = get_credentials_task()
 
-    @task.virtualenv(requirements=REQUIREMENTS, use_uv=True)
+    @task.virtualenv(requirements=REQUIREMENTS)
     def export_db(params: dict):
         from modules.tasks.export_db import db_export
         db_export(params)
 
-    @task.virtualenv(requirements=REQUIREMENTS, use_uv=True)
+    @task.virtualenv(requirements=REQUIREMENTS)
     def preprocess_jobs(params: dict):
         from modules.tasks.preprocessing import preprocessing
         preprocessing(params)
 
-    @task.virtualenv(requirements=REQUIREMENTS, use_uv=True)
+    @task.virtualenv(requirements=REQUIREMENTS)
     def training(params: dict):
         from modules.tasks.training import train
         train(params)
