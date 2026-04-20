@@ -29,7 +29,7 @@ with DAG(
                 "--token-id '{{ var.value.AIRFLOW_VAR_MODAL_TOKEN }}' "
                 "--token-secret '{{ var.value.AIRFLOW_VAR_MODAL_SECRET }}'")
 
-    @task.virtualenv(requirements='modules/requirements/deploy.txt', use_uv=True)
+    @task.virtualenv(requirements='modules/requirements/deploy.txt')
     def download_model(params: dict):
         from modules.tasks.deploy import download_and_upload_to_volume
         download_and_upload_to_volume(params=params)

@@ -17,7 +17,7 @@ with DAG(
 
     setup_credentials = get_credentials_task()
 
-    @task.virtualenv(requirements='modules/requirements/crawling.txt', use_uv=True)
+    @task.virtualenv(requirements='modules/requirements/crawling.txt')
     def crawling():
         from modules.tasks.credentials import setup_credentials
         setup_credentials()
